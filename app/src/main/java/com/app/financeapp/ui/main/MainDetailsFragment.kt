@@ -15,5 +15,4 @@ class MainDetailsFragment :
     companion object {
         fun newInstance() = MainDetailsFragment()
     }
-
 }
