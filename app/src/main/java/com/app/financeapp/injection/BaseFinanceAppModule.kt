@@ -2,6 +2,7 @@ package com.app.financeapp.injection
 
 import androidx.viewbinding.BuildConfig
 import com.app.financeapp.network.FinanceAppApiService
+import com.app.financeapp.util.NEWS_FEED_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,6 +52,7 @@ class BaseFinanceAppModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
+            .baseUrl("https://google.com/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
