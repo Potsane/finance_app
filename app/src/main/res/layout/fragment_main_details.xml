@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
             android:id="@+id/text_view_top_news"
             android:layout_width="0dp"
@@ -29,7 +28,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <com.app.financeapp.ui.custom.HorizontalListView
+            android:id="@+id/top_news_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:articles="@{viewModel.topArticles}"
+            app:clickListener="@{viewModel}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_top_news" />
+
+<!--        <LinearLayout
             android:id="@+id/layout_top_news"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,7 +54,7 @@
             app:itemsLayout="@{@layout/item_top_news_article_card}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_top_news" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_top_news" />-->
 
         <TextView
             android:id="@+id/text_view_all_news"
@@ -56,14 +68,14 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_top_news" />
+            app:layout_constraintTop_toBottomOf="@+id/top_news_view" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/news_articles_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:clipToPadding="false"
             android:paddingBottom="96dp"
