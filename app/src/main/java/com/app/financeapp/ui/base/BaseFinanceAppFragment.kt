@@ -9,7 +9,11 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.app.financeapp.BR
+import com.app.financeapp.navigation.NavigationCommand
+
 abstract class BaseFinanceAppFragment<VM : BaseFinanceAppViewModel, VDB : ViewDataBinding> :
     Fragment() {
 
@@ -35,6 +39,23 @@ abstract class BaseFinanceAppFragment<VM : BaseFinanceAppViewModel, VDB : ViewDa
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewModel, viewModel)
+
+        viewModel.uiCommands.observe(viewLifecycleOwner, Observer(::onUiCommands))
+        viewModel.navigationCommands.observe(viewLifecycleOwner, Observer(::onNavigate))
+    }
+
+    @CallSuper
+    protected open fun onUiCommands(command: Any) {
+        when (command) {
+            is ShowProgress -> showProgressBar(command.show)
+        }
+    }
+
+    private fun onNavigate(navigationCommand: NavigationCommand) {
+        when (navigationCommand) {
+            is NavigationCommand.ToDirection -> findNavController().navigate(navigationCommand.directions)
+            is NavigationCommand.Back -> findNavController().navigateUp()
+        }
     }
 
     protected abstract fun createViewModel(): VM
