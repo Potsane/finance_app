@@ -3,10 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/MainDetailsFragment">
+    app:startDestination="@id/main_details_fragment">
 
     <fragment
-        android:id="@+id/MainDetailsFragment"
+        android:id="@+id/main_details_fragment"
         android:name="com.app.financeapp.ui.main.MainDetailsFragment"
-        tools:layout="@layout/fragment_main_details" />
+        tools:layout="@layout/fragment_main_details">
+        <action
+            android:id="@+id/to_error"
+            app:destination="@id/navigation_error" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_error"
+        android:name="com.app.financeapp.ui.error.ErrorFragment"
+        tools:layout="@layout/fragment_error">
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/main_details_fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/mobile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

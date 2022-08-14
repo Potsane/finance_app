@@ -1,13 +1,13 @@
 package com.app.financeapp.ui.main
 
 import androidx.lifecycle.*
+import com.app.financeapp.datasource.StockDataProvider
 import com.app.financeapp.network.model.NewsArticle
 import com.app.financeapp.network.model.StockTicker
 import com.app.financeapp.repository.DetailsRepository
 import com.app.financeapp.ui.base.BaseFinanceAppViewModel
 import com.app.financeapp.ui.base.ShowProgress
 import com.app.financeapp.ui.main.clickliestener.NewsArticleClickListener
-import com.app.financeapp.datasource.StockDataProvider
 import com.app.financeapp.util.readStockTickerFiles
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -59,6 +59,7 @@ class MainDetailsViewModel @Inject constructor(
                 stockDataProvider.addStockTickersData(map)
             }
         } catch (exception: Exception) {
+            //do nothing,stock info views will just hide
         }
     }
 
@@ -74,6 +75,7 @@ class MainDetailsViewModel @Inject constructor(
                 }
             }
         } catch (exception: Exception) {
+            navigate(MainDetailsFragmentDirections.toError())
         }
     }
 }
