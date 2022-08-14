@@ -2,7 +2,8 @@ package com.app.financeapp.injection
 
 import androidx.viewbinding.BuildConfig
 import com.app.financeapp.network.FinanceAppApiService
-import com.app.financeapp.util.NEWS_FEED_URL
+import com.app.financeapp.datasource.StockDataProvider
+import com.app.financeapp.datasource.StockDataProviderImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -62,4 +63,8 @@ class BaseFinanceAppModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): FinanceAppApiService =
         retrofit.create(FinanceAppApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideStockDataProvider() : StockDataProvider = StockDataProviderImpl()
 }
