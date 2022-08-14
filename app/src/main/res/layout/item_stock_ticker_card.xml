@@ -52,13 +52,12 @@
                 tools:text="78.90" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/text_view_change"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="@{stock.percentageChange}"
+                app:percentageChange="@{stock.percentageChange}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
