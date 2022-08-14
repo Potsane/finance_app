@@ -52,6 +52,7 @@
                 tools:text="78.90" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/text_view_change"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
