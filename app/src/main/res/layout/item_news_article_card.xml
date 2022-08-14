@@ -5,6 +5,11 @@
 
     <data>
 
+
+        <variable
+            name="clickListener"
+            type="com.app.financeapp.ui.main.clicklistener.NewsArticleClickListener" />
+
         <variable
             name="article"
             type="com.app.financeapp.network.model.NewsArticle" />
@@ -17,6 +22,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:onClick="@{() -> clickListener.onArticleClick(article)}"
         app:cardElevation="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,10 +70,10 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
+                app:formatDate="@{article.publishedAt}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_subtitle"
-                app:formatDate="@{article.publishedAt}"
                 tools:text="10 August, 14:00" />
 
             <ImageView

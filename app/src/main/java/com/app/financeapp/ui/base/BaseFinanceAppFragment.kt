@@ -1,5 +1,7 @@
 package com.app.financeapp.ui.base
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +50,7 @@ abstract class BaseFinanceAppFragment<VM : BaseFinanceAppViewModel, VDB : ViewDa
     protected open fun onUiCommands(command: Any) {
         when (command) {
             is ShowProgress -> showProgressBar(command.show)
+            is LaunchExternalPage -> openWebPage(command.url)
         }
     }
 
@@ -69,8 +72,13 @@ abstract class BaseFinanceAppFragment<VM : BaseFinanceAppViewModel, VDB : ViewDa
         showProgressBar(false)
     }
 
-    protected fun showProgressBar(show: Boolean) {
+    private fun showProgressBar(show: Boolean) {
         val activity = requireActivity()
         if (activity is MainActivity) activity.showProgressBar(show)
+    }
+
+    private fun openWebPage(url: String?) {
+        val browse = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browse)
     }
 }

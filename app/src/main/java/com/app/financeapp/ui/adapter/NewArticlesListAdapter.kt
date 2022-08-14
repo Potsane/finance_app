@@ -6,12 +6,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.app.financeapp.BR
 import com.app.financeapp.R
 import com.app.financeapp.databinding.ItemNewsArticleCardBinding
 import com.app.financeapp.network.model.NewsArticle
-import com.app.financeapp.BR
+import com.app.financeapp.ui.main.clicklistener.NewsArticleClickListener
 
-class NewArticlesListAdapter(private val items: MutableList<NewsArticle>) :
+class NewArticlesListAdapter(
+    private val items: MutableList<NewsArticle>,
+    private val listener: NewsArticleClickListener
+) :
     RecyclerView.Adapter<NewArticlesListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,6 +50,7 @@ class NewArticlesListAdapter(private val items: MutableList<NewsArticle>) :
 
         fun bind(item: NewsArticle) {
             binding.setVariable(BR.article, item)
+            binding.setVariable(BR.clickListener, listener)
             binding.executePendingBindings()
         }
     }

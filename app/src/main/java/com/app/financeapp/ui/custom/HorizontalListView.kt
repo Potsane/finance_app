@@ -12,7 +12,7 @@ import com.app.financeapp.databinding.ItemStockTickerCardBinding
 import com.app.financeapp.databinding.ItemTopNewsArticleCardBinding
 import com.app.financeapp.network.model.NewsArticle
 import com.app.financeapp.network.model.StockTicker
-import com.app.financeapp.ui.main.clickliestener.NewsArticleClickListener
+import com.app.financeapp.ui.main.clicklistener.NewsArticleClickListener
 
 class HorizontalListView @JvmOverloads constructor(
     context: Context,

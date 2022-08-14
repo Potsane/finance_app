@@ -33,7 +33,7 @@ class MainDetailsFragment :
 
     private fun updateArticles(items: List<NewsArticle>) {
         adapter?.updateItems(items.toMutableList()) ?: run {
-            adapter = NewArticlesListAdapter(items.toMutableList())
+            adapter = NewArticlesListAdapter(items.toMutableList(), viewModel)
             binding.newsArticlesView.adapter = adapter
         }
     }

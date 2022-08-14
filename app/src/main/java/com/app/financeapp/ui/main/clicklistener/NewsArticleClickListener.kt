@@ -1,4 +1,4 @@
-package com.app.financeapp.ui.main.clickliestener
+package com.app.financeapp.ui.main.clicklistener
 
 import com.app.financeapp.network.model.NewsArticle
 
