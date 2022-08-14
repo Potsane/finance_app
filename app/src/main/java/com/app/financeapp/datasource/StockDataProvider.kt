@@ -2,8 +2,10 @@ package com.app.financeapp.datasource
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import com.app.financeapp.extension.toTwoDecimalPlaces
 import com.app.financeapp.network.model.StockTicker
 import kotlinx.coroutines.delay
+import java.util.concurrent.ThreadLocalRandom
 import kotlin.random.Random
 
 interface StockDataProvider {
@@ -30,15 +32,17 @@ class StockDataProviderImpl : StockDataProvider {
             currentList.add(
                 StockTicker(
                     key,
-                    roundTheNumber(value[Random.nextInt(0, value.size)]),
-                    "10.0"
+                    value[Random.nextInt(0, value.size)].toTwoDecimalPlaces(),
+                    randomizePercentageChange()
                 )
             )
         }
         _stockTickers.value = currentList
-        delay(100)
+        delay(1000)
         postStockTickers()
     }
 
-    private fun roundTheNumber(number: Double) = "%.2f".format(number)
+    private fun randomizePercentageChange(): Double {
+        return ThreadLocalRandom.current().nextDouble(0.1, 50.00)
+    }
 }
