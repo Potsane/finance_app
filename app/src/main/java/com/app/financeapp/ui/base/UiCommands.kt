@@ -1,3 +1,4 @@
 package com.app.financeapp.ui.base
 
-data class ShowProgress(val show: Boolean)
+class ShowProgress(val show: Boolean)
+class LaunchExternalPage(val url: String)

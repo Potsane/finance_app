@@ -6,8 +6,9 @@ import com.app.financeapp.network.model.NewsArticle
 import com.app.financeapp.network.model.StockTicker
 import com.app.financeapp.repository.DetailsRepository
 import com.app.financeapp.ui.base.BaseFinanceAppViewModel
+import com.app.financeapp.ui.base.LaunchExternalPage
 import com.app.financeapp.ui.base.ShowProgress
-import com.app.financeapp.ui.main.clickliestener.NewsArticleClickListener
+import com.app.financeapp.ui.main.clicklistener.NewsArticleClickListener
 import com.app.financeapp.util.readStockTickerFiles
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -41,6 +42,7 @@ class MainDetailsViewModel @Inject constructor(
     }
 
     override fun onArticleClick(article: NewsArticle) {
+        postUiCommand(LaunchExternalPage(article.url))
     }
 
     private fun initArticles() {
