@@ -27,25 +27,31 @@
 
             <TextView
                 android:id="@+id/text_view_title"
-                android:layout_width="231dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
                 android:gravity="start"
+                android:maxLines="2"
                 android:text="@{article.title}"
-                android:textColor="?attr/colorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
                 tools:text="This is some tiltle" />
 
             <TextView
                 android:id="@+id/text_view_subtitle"
-                android:layout_width="231dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:textColor="?attr/colorPrimary"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_title"
                 app:text="@{article.description}"
@@ -53,13 +59,15 @@
 
             <TextView
                 android:id="@+id/text_view_date"
-                android:layout_width="231dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_subtitle"
-                app:text="@{article.publishedAt}"
+                app:formatDate="@{article.publishedAt}"
                 tools:text="10 August, 14:00" />
 
             <ImageView

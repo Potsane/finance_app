@@ -23,15 +23,15 @@
                 android:id="@+id/text_view_stocks"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:gravity="center"
                 android:text="Stocks"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:showOrHide="@{viewModel.stocks != null}" />
 
             <com.app.financeapp.ui.custom.HorizontalListView
                 android:id="@+id/top_stocks_view"
@@ -43,19 +43,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_stocks"
+                app:showOrHide="@{viewModel.stocks != null}"
                 app:stockTickers="@{viewModel.stocks}" />
 
             <TextView
                 android:id="@+id/text_view_top_news"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
+                android:text="Trending"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/top_stocks_view" />
+                app:layout_constraintTop_toBottomOf="@+id/top_stocks_view"
+                app:showOrHide="@{viewModel.topArticles != null}" />
 
             <com.app.financeapp.ui.custom.HorizontalListView
                 android:id="@+id/top_news_view"
@@ -68,22 +71,24 @@
                 app:clickListener="@{viewModel}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_top_news" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_top_news"
+                app:showOrHide="@{viewModel.topArticles != null}" />
 
             <TextView
                 android:id="@+id/text_view_all_news"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:gravity="center"
                 android:text="News articles"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/top_news_view" />
+                app:layout_constraintTop_toBottomOf="@+id/top_news_view"
+                app:showOrHide="@{viewModel.articles != null}" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/news_articles_view"

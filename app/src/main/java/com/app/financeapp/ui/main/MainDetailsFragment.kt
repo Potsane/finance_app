@@ -21,14 +21,14 @@ class MainDetailsFragment :
 
     override fun getLayoutId() = R.layout.fragment_main_details
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycle.addObserver(viewModel)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.articles.observe(viewLifecycleOwner, Observer(::updateArticles))
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.onResume()
     }
 
     private fun updateArticles(items: List<NewsArticle>) {
