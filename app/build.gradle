@@ -76,7 +76,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.7.7"
 
     //Lottie
-    implementation 'com.airbnb.android:lottie:6.2.0'
+    implementation 'com.airbnb.android:lottie:6.4.1'
 
     //Unit testing
     testImplementation 'junit:junit:4.13.2'
